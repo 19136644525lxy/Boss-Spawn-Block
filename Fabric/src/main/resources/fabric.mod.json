@@ -1,0 +1,34 @@
+{
+	"schemaVersion": 1,
+	"id": "bsb",
+	"version": "${version}",
+	"name": "Boss Spawner Block",
+	"description": "这是一个自定义生物刷怪笼-This is a boss spawner block",
+	"authors": [
+		"Yifei"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "MIT",
+	"icon": "assets/bsb/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.yifei.bsb.Bsb"
+		],
+		"fabric-datagen": [
+			"com.yifei.bsb.BsbDataGenerator"
+		]
+	},
+	"mixins": [
+		"bsb.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.14.13",
+		"minecraft": "~1.20.1",
+		"java": ">=17",
+		"fabric-api": "*"
+	}
+}

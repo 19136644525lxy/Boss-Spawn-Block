@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "bsb:block/custom_boss_spawner"
+    }
+  }
+}

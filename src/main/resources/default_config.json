@@ -1,0 +1,6 @@
+{
+  "bossSpawner": {
+    "bossSpawnEgg": "minecraft:ender_dragon_spawn_egg",
+    "bossSpawnDelay": 0
+  }
+}
