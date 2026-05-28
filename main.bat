@@ -1,31 +1,33 @@
 @echo off
 chcp 65001 >nul
-echo 正在同步代码到GitHub...
+cls
+echo ==============================================
+echo          Git 一键提交更新脚本
+echo ==============================================
+echo.
 
-:: 添加所有更改
+:: 1. 让你输入提交说明
+set /p msg=请输入本次更新的说明（必填）：
+
+:: 如果没输入内容，自动给一个默认提交信息
+if not defined msg (
+    set msg="自动提交：快速更新"
+)
+
+echo.
+echo 正在提交代码，请稍候...
+echo.
+
+:: 2. Git 核心命令
 git add .
-if %errorlevel% neq 0 (
-    echo 添加文件失败
-    pause
-    exit /b 1
-)
-
-:: 提交更改
-set /p commit_message=请输入提交信息: 
-git commit -m "%commit_message%"
-if %errorlevel% neq 0 (
-    echo 提交失败
-    pause
-    exit /b 1
-)
-
-:: 推送到GitHub
+git commit -m "%msg%"
 git push
-if %errorlevel% neq 0 (
-    echo 推送失败
-    pause
-    exit /b 1
-)
 
-echo 代码同步成功！
+echo.
+echo ==============================================
+echo          提交完成！已推送到 GitHub
+echo ==============================================
+echo.
+
+:: 暂停窗口，方便看结果
 pause
