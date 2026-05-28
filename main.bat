@@ -1,33 +1,35 @@
 @echo off
 chcp 65001 >nul
 cls
+color 0A
 echo ==============================================
-echo          Git 一键提交更新脚本
+echo          Git 提交 + 推送 GitHub 脚本
 echo ==============================================
 echo.
 
-:: 1. 让你输入提交说明
-set /p msg=请输入本次更新的说明（必填）：
+:: 输入提交信息
+set /p commit_msg=请输入本次更新内容：
 
-:: 如果没输入内容，自动给一个默认提交信息
-if not defined msg (
-    set msg="自动提交：快速更新"
+:: 如果没输入，给默认值
+if "%commit_msg%"=="" (
+    set commit_msg=快速更新
 )
 
 echo.
-echo 正在提交代码，请稍候...
-echo.
-
-:: 2. Git 核心命令
+echo [1/3] 正在添加所有文件...
 git add .
-git commit -m "%msg%"
-git push
+
+echo.
+echo [2/3] 正在本地提交：%commit_msg%
+git commit -m "%commit_msg%"
+
+echo.
+echo [3/3] 正在推送到 GitHub 远程仓库...
+git push origin HEAD
 
 echo.
 echo ==============================================
-echo          提交完成！已推送到 GitHub
+echo              ✅ 推送完成！
 echo ==============================================
 echo.
-
-:: 暂停窗口，方便看结果
 pause
